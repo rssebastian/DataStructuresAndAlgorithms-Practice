@@ -42,8 +42,7 @@ const same = (arr1, arr2) => {
     return true;
 };
 
-// Test Cases:
+// Run test cases:
 console.log(same([1, 2, 3], [4, 1, 9]) === true);
 console.log(same([1, 2, 3], [1, 9]) === false);
 console.log(same([1, 2, 3], [4, 4, 1]) === false);
-
