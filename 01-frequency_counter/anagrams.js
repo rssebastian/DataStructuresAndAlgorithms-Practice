@@ -19,26 +19,21 @@ const validAnagram = (str1, str2) => {
     };
 
     // Create counters to track each letter used
-    const letterCounter1 = {};
-    const letterCounter2 = {};
+    const letterCounter = {};
 
     // Go through each char in str and increment counter for each use
     str1.toLowerCase().split('').forEach(char => {
-        letterCounter1[char] = (letterCounter1[char] || 0) + 1;
+        letterCounter[char] = (letterCounter[char] || 0) + 1;
     });
 
-    str2.toLowerCase().split('').forEach(char => {
-        letterCounter2[char] = (letterCounter2[char] || 0) + 1;
-    });
-
-    for (let key in letterCounter1) {
-        if (!letterCounter2[key]) {
+    for (let i=0; i<str2.length; i++) {
+        let letter = str2[i];
+        
+        if (!letterCounter[letter]) {
             return false;
-        };
-
-        if (letterCounter1[key] !== letterCounter2[key]) {
-            return false;
-        };
+        } else {
+            letterCounter[letter]--;
+        }
     };
 
     return true;
