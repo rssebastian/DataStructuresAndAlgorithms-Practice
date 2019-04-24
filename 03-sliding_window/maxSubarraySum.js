@@ -14,12 +14,17 @@ const maxSubarraySum = (arr, num) => {
     let maxSum = 0;
     let tempSum = 0;
 
+    // Edge Case: if array is empty or too small
     if (arr.length < num) return null;
 
+    // Take the initial sum of the first possible subArray
     for (let i=0; i<num; i++) {
         maxSum+=arr[i];
     };
 
+    // Make the tempSum equal itself
+    // but adding the next element
+    // and subtracting the previous first element
     tempSum = maxSum;
     for (let i=num; i<arr.length; i++) {
         tempSum = tempSum - arr[i - num] + arr[i];
