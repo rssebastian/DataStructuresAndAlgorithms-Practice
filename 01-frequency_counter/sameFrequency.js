@@ -14,6 +14,9 @@ const sameFrequency = (int1, int2) => {
     const intStr1 = int1.toString();
     const intStr2 = int2.toString();
     
+    // Edge Case: ints are of different lengths
+    if(intStr1.length !== intStr2.length) return false;
+
     // Create obj to track integer frequency
     const intTracker = {};
 
