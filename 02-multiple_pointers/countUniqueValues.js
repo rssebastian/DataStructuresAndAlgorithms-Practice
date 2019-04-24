@@ -9,16 +9,36 @@
 // countUniqueValues([]) === 0
 // countUniqueValues([-2, -1, -1, 0, 1]) === 4
 
+// Without Pointer
+
+// const countUniqueValues = arr => {
+//     let uniqueVals = 0;
+//     const numTracker = {};
+//     for (let i=0; i<arr.length; i++) {
+//         if (!numTracker[arr[i]]) {
+//             numTracker[arr[i]] = true;
+//             uniqueVals++;
+//         }
+//     }
+//     return uniqueVals;
+// };
+
+// With Pointer
 const countUniqueValues = arr => {
-    let uniqueVals = 0;
-    const numTracker = {};
-    for (let i=0; i<arr.length; i++) {
-        if (!numTracker[arr[i]]) {
-            numTracker[arr[i]] = true;
-            uniqueVals++;
-        }
+    let leftIndex = 0;
+    let rightIndex = 1;
+    if (!arr.length) {
+        return 0;
     }
-    return uniqueVals;
+    while (rightIndex < arr.length) {
+        if (arr[leftIndex] !== arr[rightIndex]) {
+            leftIndex++;
+            arr[leftIndex] = arr[rightIndex];
+        } else {
+            rightIndex++;
+        }
+    };
+    return leftIndex + 1;
 };
 
 console.log(countUniqueValues([1,1,1,1,1,2]) === 2);
