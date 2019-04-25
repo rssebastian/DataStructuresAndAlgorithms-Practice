@@ -13,6 +13,9 @@
 // averagePair([1,3,3,5,6,7,10,12,19],8) === true
 
 const averagePair = (arr, avg) => {
+    // Edge case: array doesn't have enough elements
+    if (arr.length < 2) return false;
+    
     // Create pointers on the beginning and end of array
     let leftIndex = 0;
     let rightIndex = arr.length - 1;
