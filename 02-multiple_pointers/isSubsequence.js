@@ -38,24 +38,43 @@
 // };
 
 // v2 - iteration
-const isSubsequence = (str1, str2) => {
-    // Create pointers for each string
-    let str1Pointer = 0;
-    let str2Pointer = 0;
+// const isSubsequence = (str1, str2) => {
+//     // Create pointers for each string
+//     let str1Pointer = 0;
+//     let str2Pointer = 0;
 
-    while (str2Pointer < str2.length) {
-        // If str1's char matches current char on str2,
-        // move str1's pointer
-        if (str2[str2Pointer] === str1[str1Pointer]) str1Pointer++;
+//     while (str2Pointer < str2.length) {
+//         // If str1's char matches current char on str2,
+//         // move str1's pointer
+//         if (str2[str2Pointer] === str1[str1Pointer]) str1Pointer++;
         
-        // If str1 has been fully iterated through, function true
-        if (str1Pointer === str1.length) return true;
+//         // If str1 has been fully iterated through, function true
+//         if (str1Pointer === str1.length) return true;
         
-        // Move str2Pointer forward
-        str2Pointer++;
-    };
-    return false;
+//         // Move str2Pointer forward
+//         str2Pointer++;
+//     };
+//     return false;
+// };
+
+// v3 - Recursion
+const isSubsequence = (str1, str2) => {
+    // If str1 has been fully iterated through
+    if (str1.length===0) return true;
+    
+    // If str2 reached end and didn't return yet, function false
+    if (str2.length===0) return false;
+    
+    // If the characters match, run the function again
+    // But with both strings shortened
+    if (str2[0] === str1[0]) return isSubsequence(str1.slice(1), str2.slice(1));
+    
+    // If the characters don't match, only run the function
+    // again with the second string shortened, maintaining 
+    // the order of chars in str1
+    return isSubsequence(str1, str2.slice(1));
 };
+
 
 console.log(isSubsequence('hello', 'hello world') === true);
 console.log(isSubsequence('sing', 'sting') === true );
