@@ -19,26 +19,19 @@ const averagePair = (arr, avg) => {
     // Create pointers on the beginning and end of array
     let leftIndex = 0;
     let rightIndex = arr.length - 1;
-    let tempAvg = (arr[leftIndex] + arr[rightIndex]) / 2;
 
     // leftIndex and rightIndex should never be the same
     // they would refer to the same element
     while (leftIndex !== rightIndex) {
-        if (tempAvg === avg) {
-            return true;
-        } else if (tempAvg > avg) {
-            // If tempAvg is too big, decrementing rightIndex
-            // should lower tempAvg
-            rightIndex--;
-            // Recalculate average
-            tempAvg = (arr[leftIndex] + arr[rightIndex]) / 2;
-        } else {
-            // If tempAvg is too small, incrementing leftIndex
-            // should increase tempAvg
-            leftIndex++;
-            // Recalculate average
-            tempAvg = (arr[leftIndex] + arr[rightIndex]) / 2;
-        };
+        // Recalculate average each iteration
+        let tempAvg = (arr[leftIndex] + arr[rightIndex]) / 2;
+        if (tempAvg === avg) return true;
+        // If tempAvg is too big, decrementing rightIndex
+        // should lower tempAvg
+        else if (tempAvg > avg) rightIndex--; 
+        // If tempAvg is too small, incrementing leftIndex
+        // should increase tempAvg
+        else leftIndex++;
     };
 
     return false;
