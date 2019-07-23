@@ -19,24 +19,47 @@
 // Input: Dog
 // Output: false
 
-var validPassword = function(str) {
-    var hasUpper = false;
-    var hasLower = false;
+// ES5
+// var validPassword = function(str) {
+//     var hasUpper = false;
+//     var hasLower = false;
     
-    if (str.length < 8) {
-        return false;
-    };
+//     if (str.length < 8) {
+//         return false;
+//     };
 
-    for (var i=0; i<str.length; i++) {
+//     for (var i=0; i<str.length; i++) {
+//         if (str[i].toLowerCase() === str[i]) {
+//             hasLower = true;
+//         };
+//         if (str[i].toUpperCase() === str[i]) {
+//             hasUpper = true;
+//         };
+//     };
+
+//     return hasUpper && hasLower
+// };
+
+// ES6
+const validPassword = str => {
+    // Automatically return false if str isn't long enough
+    if (str.length < 8) return false;
+    
+    let hasUpper = false;
+    let hasLower = false;
+    
+    for (let i=0; i<str.length; i++) {
+        // Check if lowercase letter exists
         if (str[i].toLowerCase() === str[i]) {
             hasLower = true;
         };
+        // Check if uppercase letter exists
         if (str[i].toUpperCase() === str[i]) {
             hasUpper = true;
         };
     };
-
-    return hasUpper && hasLower
+    
+    return hasUpper && hasLower;
 };
 
 console.log(validPassword('RexTheDog') === true);
