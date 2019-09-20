@@ -14,14 +14,20 @@ const minSubArrayLen = (arr, val) => {
     let end = 0;
     let minLen = Infinity;
 
+    // increment start each pass
     while (start < arr.length) {
+        // window not yet found, increase size of window to right
         if (sum < val && end < arr.length) {
             sum += arr[end];
             end++;
+        // window has been found, decrease window from left
+        // and see if still holds true
         } else if ( sum >= val) {
             minLen = Math.min(minLen, end-start);
+            // removes the first el from subArraySum
             sum -= arr[start];
             start++
+        // none of the elements add up to the val
         } else break;
     };
 
