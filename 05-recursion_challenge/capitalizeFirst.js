@@ -31,5 +31,4 @@ const checkSol = (testArr, testSol) => {
     };
 };
 
-// capitalizeFirst(['car','taco','banana']); // ['Car','Taco','Banana']
 console.log(checkSol(['car','taco','banana'], ['Car','Taco','Banana']));
