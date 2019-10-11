@@ -11,7 +11,9 @@ const nestedEvenSum = obj => {
         if (typeof obj[el] === 'number' && obj[el] % 2 === 0) evenSum += obj[el]
     })
     return evenSum;
-}
+};
+
+// Running Test Cases:
 
 var obj1 = {
   outer: 2,
